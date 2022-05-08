@@ -2,13 +2,49 @@ package model;
 
 public class HybridCar extends Car implements IGas, IElectricity{
 	
+	/**
+	*capacity double, is a variable of double that contains the fuel capacity of the car
+	*/
+	
 	private double capacity;
+	
+	/**
+	*typeF FuelType, is a variable of FuelType that tell us if the car needs current, extra or diesel
+	*/
 	
 	protected FuelType typeF;
 	
+	/**
+	*typeOfCharger ChargerType, is a variable of ChargerType that tell us if the charger is fast or normal
+	*/
+	
 	protected ChargerType typeOfCharger;
 	
+	/**
+	*batteryDuration double, is a variable of double that contains the batteryDuration of the ElectricCar
+	*/
+	
 	private double batteryDuration;
+	
+	/**
+	*Constructor from objects of HybridCar type
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param typeV VehicleType, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param documents Document[], it's initialized
+	*@param typeC CarType, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param capacity double, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param typeF FuelType, it's initialized
+	*@param typeOfCharger ChargerType, it's initialized
+	*@param batteryDuration double, it's initialized
+	*@return an object of HybridCar type
+	*/
 	
 	public HybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, double capacity, boolean tintedWindows, FuelType typeF, ChargerType typeOfCharger, double batteryDuration){
 		
@@ -27,6 +63,11 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	
 	@Override
 	
+	/**
+	*Method that calculates the gasoline consumption of the car
+	*@return double with the consumption
+	*/
+	
 	public double GasolineConsumption(){
 		
 		return capacity*(cylinderCapacity/180);
@@ -35,6 +76,11 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	
 	
 	@Override
+	
+	/**
+	*Method that calculates the electricity consumption of the car
+	*@return double with the consumption
+	*/
 	
 	public double ElectricityConsumption(){
 		
@@ -56,6 +102,11 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	}
 	
 	@Override
+	
+	/**
+	*Method that calculates the price of the car
+	*@return double with the sale price of the car
+	*/
 	
 	public double CalculatePrice(){
 		
@@ -80,6 +131,12 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the car as a message
+	*@return String with all the attributes
+	*/
+	
 	public String toString(){
 		
 		String msg=super.toString();

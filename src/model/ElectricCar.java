@@ -2,9 +2,35 @@ package model;
 
 public class ElectricCar extends Car implements IElectricity{
 	
+	/**
+	*typeOfCharger ChargerType, is a variable of ChargerType that tell us if the charger is fast or normal
+	*/
+	
 	private ChargerType typeOfCharger;
 	
+	/**
+	*batteryDuration double, is a variable of double that contains the batteryDuration of the ElectricCar
+	*/
+	
 	private double batteryDuration;
+	
+	/**
+	*Constructor from objects of ElectricCar type
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param typeV VehicleType, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param documents Document[], it's initialized
+	*@param typeC CarType, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param typeOfCharger ChargerType, it's initialized
+	*@param batteryDuration double, it's initialized
+	*@return an object of ElectricCar type
+	*/
 	
 	public ElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows, ChargerType typeOfCharger, double batteryDuration){
 		
@@ -17,6 +43,11 @@ public class ElectricCar extends Car implements IElectricity{
 	}
 
 	@Override
+	
+	/**
+	*Method that calculates the electricity consumption of the car
+	*@return double with the consumption
+	*/
 	
 	public double ElectricityConsumption(){
 		
@@ -38,6 +69,11 @@ public class ElectricCar extends Car implements IElectricity{
 	}
 	
 	@Override
+	
+	/**
+	*Method that calculates the price of the car
+	*@return double with the sale price of the car
+	*/
 	
 	public double CalculatePrice(){
 		
@@ -62,6 +98,12 @@ public class ElectricCar extends Car implements IElectricity{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the car as a message
+	*@return String with all the attributes
+	*/
+	
 	public String toString(){
 		
 		String msg=super.toString();

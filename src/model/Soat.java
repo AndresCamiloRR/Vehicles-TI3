@@ -2,8 +2,20 @@ package model;
 
 public class Soat extends Document{
 	
+	/**
+	*coverage double, is a variable of double type that contains the coverage that the soat has
+	*/
+	
 	private double coverage;
 	
+	
+	/**
+	*Constructor from objects of Car type
+	*@param price double, it's initialized
+	*@param year String, it's initialized
+	*@param coverage double, it's initialized
+	*@return an object of Soat type
+	*/
 	
 	public Soat(double price, String year, double coverage){
 	
@@ -14,6 +26,11 @@ public class Soat extends Document{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the document as a message and decipher the picture for the soat
+	*@return String with all the attributes
+	*/
 	
 	public String toString(){
 		

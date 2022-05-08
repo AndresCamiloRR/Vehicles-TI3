@@ -5,8 +5,23 @@ import java.util.Scanner;
 
 public class Main{
 	
+	/**
+	*shop VehicleDealer, is an object of VehicleDealer type, and it will work as the controller
+	*/
+	
 	private VehicleDealer shop;
+	
+	/**
+	*sc Scanner, is an object of Scanner type that reads the inputs inserted by the user
+	*/
+	
 	private Scanner sc;
+	
+	/**
+	*Constructor from objects of Main type that uses the init class of package ui to send it as a parameter to the constructor of VehicleDealer
+	*@param vehicles ArrayList<Vehicle>, it's initialized
+	*@return an object of VehicleDealer type
+	*/
 	
 	public Main(){
 		
@@ -16,6 +31,10 @@ public class Main{
 		sc= new Scanner(System.in);
 		
 	}
+	
+	/**
+	*Main method
+	*/
 	
 	public static void main (String[] args){
 		
@@ -33,6 +52,10 @@ public class Main{
 		
 	}
 	
+	/**
+	*Method that will show the menu and read the user input
+	*/
+	
 	public int showMenu() {
 		int option=0;
 
@@ -46,6 +69,11 @@ public class Main{
 		sc.nextLine();
 		return option;
 	}
+	
+	/**
+	*Method that based on the parameter operation will call the method that can fulfill the request
+	*@param operation int that contains the choice made by the user
+	*/
 	
 	public void executeOperation(int operation) {
 		
@@ -67,6 +95,10 @@ public class Main{
 		
 		}
 	}
+	
+	/**
+	*Method that will ask the user if we wants to create a motorbike or a car, if it's a car ask the type of fuel (gasoline, battery, hybrid), and if it's a motorbike it will be gasoline, to then call a method based on the user inputs
+	*/
 	
 	public void wichVehicle(){
 		
@@ -106,6 +138,12 @@ public class Main{
 		}
 		
 	}
+	
+	/**
+	*Method that ask the user for the common attributes of all vehicles and based on his parameters will call one of the add method than can fulfill the user request
+	*@param carOrBike int, it's initialized
+	*@param optionFuel int, it's initialized
+	*/
 	
 	public void DefaultVehicle(int carOrBike, int optionFuel){
 		
@@ -254,6 +292,24 @@ public class Main{
 		
 	}
 	
+	/**
+	*Method that ask the user for the missing attributes of a GasCar and send them as parameters to the addGasCar method in controller class
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*/
 	
 	public void addGasCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
 		
@@ -304,6 +360,25 @@ public class Main{
 		
 	}
 	
+	/**
+	*Method that ask the user for the missing attributes of a ElectricCar and send them as parameters to the addElectricCar method in controller class
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*/
+	
 	public void addElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
 		
 		
@@ -349,6 +424,25 @@ public class Main{
 		
 		
 	}
+	
+	/**
+	*Method that ask the user for the missing attributes of a HybridCar and send them as parameters to the addHybridCar method in controller class
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*/
 	
 	public void addHybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
 		
@@ -407,6 +501,25 @@ public class Main{
 		
 	}
 	
+	/**
+	*Method that ask the user for the missing attributes of a Motorbike and send them as parameters to the addMotorbike method in controller class
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*/
+	
 	public void addMotorbike(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
 		
 		int bikeOption=0;
@@ -439,6 +552,10 @@ public class Main{
 		
 		
 	}
+	
+	/**
+	*Method that will ask the user the conditions that he wants the vehicles to meet
+	*/
 	
 	public void WichInfoV(){
 		

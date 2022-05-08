@@ -10,11 +10,28 @@ public class VehicleDealer{
 	
 	public int propertyCardPlace = 2;
 	
+	/**
+	*vehicles ArrayList<Vehicle>, is an array of ArrayList<Vehicle> that contains the vehicles of the concessionaire
+	*/
+	
 	private ArrayList<Vehicle> vehicles;
+	
+	/**
+	*parkingLot Vehicle[][], is a matrix of Vehicle that contains the vehicles parked in the parking lot
+	*/
 	
 	private Vehicle[][] parkingLot;
 	
+	/**
+	*documents Document[], is a variable of Document type that contains the documents of the vehicle like soat, technical mechanical review and property card
+	*/
+	
 	private Document[] newDocs;
+	
+	/**
+	*Constructor from objects of VehicleDealer type
+	*@return an object of VehicleDealer type
+	*/
 	
 	public VehicleDealer(){
 		
@@ -23,11 +40,42 @@ public class VehicleDealer{
 		
 	}
 	
+	/**
+	*Constructor from objects of VehicleDealer type that uses the init class of package ui to fill the array
+	*@param vehicles ArrayList<Vehicle>, it's initialized
+	*@return an object of VehicleDealer type
+	*/
+	
 	public VehicleDealer(ArrayList<Vehicle> vehicles){
 		
 		this.vehicles = vehicles;
 		
 	}
+	
+	/**
+	*Method that creates a Document array and uses it, and the other parameters to create an object of GasCar type and send it to the vehicles array
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*@param carOption int, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param capacity double, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param fuelOption int, it's initialized
+	*@return an String to confirm that the vehicle was added
+	*/
 	
 	public String addGasCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption){
 		
@@ -98,6 +146,31 @@ public class VehicleDealer{
 		return("El carro de gasolina ha sido añadido");
 	}
 	
+	/**
+	*Method that creates a Document array and uses it, and the other parameters to create an object of ElectricCar type and send it to the vehicles array
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*@param carOption int, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param chargerOption int, it's initialized
+	*@param batteryDuration double, it's initialized
+	*@return an String to confirm that the vehicle was added
+	*/
+	
 	public String addElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, boolean tintedWindows, int chargerOption, double batteryDuration){
 		
 		VehicleType typeV=null;
@@ -164,6 +237,33 @@ public class VehicleDealer{
 		
 		return("El carro electrico ha sido añadido");
 	}
+	
+	/**
+	*Method that creates a Document array and uses it, and the other parameters to create an object of HybridCar type and send it to the vehicles array
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*@param carOption int, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param capacity double, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param fuelOption int, it's initialized
+	*@param chargerOption int, it's initialized
+	*@param batteryDuration double, it's initialized
+	*@return an String to confirm that the vehicle was added
+	*/
 	
 	public String addHybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption, int chargerOption, double batteryDuration){
 		
@@ -247,6 +347,33 @@ public class VehicleDealer{
 		
 	}
 	
+	/**
+	*Constructor from objects of Vehicle type
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param optionUsed int, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param soatPrice double, it's initialized
+	*@param soatYear String, it's initialized
+	*@param soatCoverage double, it's initialized
+	*@param mechTechPrice double, it's initialized
+	*@param mechTechYear String, it's initialized
+	*@param mechTechGasLevels String, it's initialized
+	*@param propertyPrice double, it's initialized
+	*@param propertyYear String, it's initialized
+	*@param carOption int, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param capacity double, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@param fuelOption int, it's initialized
+	*@param chargerOption int, it's initialized
+	*@param batteryDuration double, it's initialized
+	*@return an String to confirm that the vehicle was added
+	*/
+	
 	public String addMotorbike(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int bikeOption, double capacity,int fuelOption){
 		
 		VehicleType typeV=null;
@@ -321,6 +448,13 @@ public class VehicleDealer{
 		return ("La moto ha sido agregada");
 		
 	}
+	
+	/**
+	*Method that gets the info from all the vehicles that meet the chosen conditions by the user
+	*@param filter int, it's initialized
+	*@param secondFilter int, it's initialized
+	*@return an String with the wanted info
+	*/
 	
 	public String PrintInfo(int filter, int secondFilter){
 		

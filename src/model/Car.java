@@ -1,13 +1,40 @@
 package model;
 
 public abstract class Car extends Vehicle{
-
+	
+	/**
+	*typeC CarType, is a variable of CarType wich tell us if the car is a Sedan or a Pick up
+	*/
+	
 	private CarType typeC;
+	
+	/**
+	*numOfDoors int, is a variable of int type that contains the number of doors from the car
+	*/
 	
 	private int numOfDoors;
 	
+	/**
+	*tintedWindows boolean, is a variable of boolean type that tell us if the windows ar tinted or not
+	*/
+	
 	private boolean tintedWindows;
 	
+	/**
+	*Constructor from objects of Car type
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param typeV VehicleType, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param documents Document[], it's initialized
+	*@param typeC CarType, it's initialized
+	*@param numOfDoors int, it's initialized
+	*@param tintedWindows boolean, it's initialized
+	*@return an object of Car type
+	*/
 	
 	public Car(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows){
 		
@@ -22,6 +49,11 @@ public abstract class Car extends Vehicle{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the car as a message
+	*@return String with all the attributes
+	*/
 	
 	public String toString(){
 		

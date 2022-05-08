@@ -2,8 +2,19 @@ package model;
 
 public class MechTechReview extends Document{
 	
+	/**
+	*gasLevels String, is a variable of String type that contains the gasLevels registered in the mechanical technical review
+	*/
+	
 	private String gasLevels;
 	
+	/**
+	*Constructor from objects of Car type
+	*@param price double, it's initialized
+	*@param year String, it's initialized
+	*@param gasLevels String, it's initialized
+	*@return an object of Document type
+	*/
 	
 	public MechTechReview(double price, String year, String gasLevels){
 	
@@ -14,6 +25,11 @@ public class MechTechReview extends Document{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the document as a message and decipher the picture for the mechanical technical review
+	*@return String with all the attributes
+	*/
 	
 	public String toString(){
 		

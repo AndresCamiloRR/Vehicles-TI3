@@ -2,11 +2,39 @@ package model;
 
 public class Motorbike extends Vehicle implements IGas, ICalculatePrice{
 	
+	/**
+	*typeM MotorbikeType, is a variable of MotorbikeType wich tell us if the motorbike is the type standard, sports, scooter or cross
+	*/
+	
 	protected MotorbikeType typeM;
+	
+	/**
+	*capacity double, is a variable of double that contains the fuel capacity of the Motorbike
+	*/
 	
 	private double capacity;
 	
+	/**
+	*typeF FuelType, is a variable of FuelType that tell us if the motorbike needs current, extra or diesel
+	*/
+	
 	private FuelType typeF;
+	
+	/**
+	*Constructor from objects of Motorbike type
+	*@param basePrice double, it's initialized
+	*@param brand String, it's initialized
+	*@param model String, it's initialized
+	*@param cylinderCapacity double, it's initialized
+	*@param mileage double, it's initialized
+	*@param typeV VehicleType, it's initialized
+	*@param licensePlate String, it's initialized
+	*@param documents Document[], it's initialized
+	*@param typeM MotorbikeType, it's initialized
+	*@param capacity double, it's initialized
+	*@param typeF FuelType, it's initialized
+	*@return an object of Motorbike type
+	*/
 	
 	public Motorbike(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, MotorbikeType typeM, double capacity, FuelType typeF){
 		
@@ -19,6 +47,11 @@ public class Motorbike extends Vehicle implements IGas, ICalculatePrice{
 	
 	@Override
 	
+	/**
+	*Method that calculates the gasoline consumption of the motorbike
+	*@return double with the consumption
+	*/
+	
 	public double GasolineConsumption(){
 		
 		return capacity*(cylinderCapacity/75);
@@ -26,6 +59,11 @@ public class Motorbike extends Vehicle implements IGas, ICalculatePrice{
 	}
 	
 	@Override
+	
+	/**
+	*Method that calculates the price of the motorbike
+	*@return double with the sale price of the motorbike
+	*/
 	
 	public double CalculatePrice(){
 		
@@ -54,6 +92,11 @@ public class Motorbike extends Vehicle implements IGas, ICalculatePrice{
 	}
 	
 	@Override
+	
+	/**
+	*Method that returns all the info from the motorbike as a message
+	*@return String with all the attributes
+	*/
 	
 	public String toString(){
 		
