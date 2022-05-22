@@ -153,7 +153,7 @@ public class VehicleDealer{
 		
 		vehicles.add(new GasCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF));
 		
-		out="El carro de gasolina ha sido añadido\n\n";
+		out="El carro de gasolina ha sido anadido y tiene id: " + vehicles.size() + "\n\n";
 
 		if(typeV==VehicleType.USED){
 			
@@ -254,7 +254,7 @@ public class VehicleDealer{
 		
 		vehicles.add(new ElectricCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, tintedWindows, typeOfCharger, batteryDuration));
 		
-		out="El carro electrico ha sido añadido\n\n";
+		out="El carro electrico ha sido anadido y tiene id: " + vehicles.size() + "\n\n";
 
 		if(typeV==VehicleType.USED){
 			
@@ -373,7 +373,7 @@ public class VehicleDealer{
 		
 		vehicles.add(new HybridCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF, typeOfCharger, batteryDuration));
 		
-		out="El carro hibrido ha sido añadido\n\n";
+		out="El carro hibrido ha sido anadido y tiene id: " + vehicles.size() + "\n\n";
 
 		if(typeV==VehicleType.USED){
 			
@@ -481,7 +481,7 @@ public class VehicleDealer{
 		
 		vehicles.add(new Motorbike(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs,typeM,capacity,typeF));
 		
-		out="La moto ha sido agregada\n\n";
+		out="La moto ha sido agregada y tiene id: " + vehicles.size() + "\n\n";
 
 		if(typeV==VehicleType.USED){
 			

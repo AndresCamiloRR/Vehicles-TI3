@@ -108,7 +108,7 @@ public class ElectricCar extends Car implements IElectricity{
 		
 		String msg=super.toString();
 		
-		msg+="\nTiene un consumo de bateria de: " + ElectricityConsumption();
+		msg+="\nTiene un consumo de bateria de: " + String.format("%.2f", ElectricityConsumption());
 		
 		if(typeOfCharger==ChargerType.FAST){
 			
@@ -122,7 +122,7 @@ public class ElectricCar extends Car implements IElectricity{
 		
 		msg+="\nLa bateria dura: " + batteryDuration + " horas";
 		
-		msg+="\nTiene un precio de:" + CalculatePrice()+"\n--------------------------------\n";
+		msg+="\nTiene un precio de:" + String.format("%.2f", CalculatePrice())+"\n--------------------------------\n";
 		
 		return msg;
 		

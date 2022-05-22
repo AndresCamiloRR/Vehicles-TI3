@@ -141,7 +141,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 		
 		String msg=super.toString();
 		
-		msg+="\nTiene un consumo de gasolina de: " + GasolineConsumption();
+		msg+="\nTiene un consumo de gasolina de: " + String.format("%.2f", GasolineConsumption());
 		
 		if(typeF==FuelType.CURRENT){
 			
@@ -158,7 +158,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 		}
 		
 		
-		msg+="\nTiene un consumo de bateria de: " + ElectricityConsumption();
+		msg+="\nTiene un consumo de bateria de: " + String.format("%.2f", ElectricityConsumption());
 		
 		if(typeOfCharger==ChargerType.FAST){
 			
@@ -172,7 +172,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 		
 		msg+="\nLa bateria dura: " + batteryDuration + " horas";
 		
-		msg+="\nTiene un precio de:" + CalculatePrice()+"\n--------------------------------\n";
+		msg+="\nTiene un precio de:" + String.format("%.2f", CalculatePrice())+"\n--------------------------------\n";
 		
 		return msg;
 		

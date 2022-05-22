@@ -402,7 +402,7 @@ public class Main{
 		
 		}while(fuelOption!=1&&fuelOption!=2&&fuelOption!=3);
 
-		shop.addGasCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption);
+		System.out.println(shop.addGasCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption));
 		
 		
 	}
@@ -465,7 +465,7 @@ public class Main{
 		}
 		
 		do{
-			System.out.println("Ingrese la duración de la bateria en horas");
+			System.out.println("Ingrese la duracion de la bateria en horas");
 			batteryDuration=sc.nextInt();
 		}while(batteryDuration<=0);
 
@@ -476,7 +476,7 @@ public class Main{
 			chargerOption=sc.nextInt();
 		}while(chargerOption!=1&&chargerOption!=2);
 
-		shop.addElectricCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, tintedWindows, chargerOption, batteryDuration);
+		System.out.println(shop.addElectricCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, tintedWindows, chargerOption, batteryDuration));
 		
 		
 	}
@@ -554,10 +554,8 @@ public class Main{
 		
 		}while(fuelOption!=1&&fuelOption!=2&&fuelOption!=3);
 		
-		fuelOption=sc.nextInt();
-		
 		do{
-			System.out.println("Ingrese la duración de la bateria en horas");
+			System.out.println("Ingrese la duracion de la bateria en horas");
 			batteryDuration=sc.nextInt();
 		}while(batteryDuration<=0);
 
@@ -568,7 +566,7 @@ public class Main{
 			chargerOption=sc.nextInt();
 		}while(chargerOption!=1&&chargerOption!=2);
 		
-		shop.addHybridCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption, chargerOption, batteryDuration);
+		System.out.println(shop.addHybridCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption, chargerOption, batteryDuration));
 		
 		
 	}
@@ -619,7 +617,7 @@ public class Main{
 		System.out.println("Cual es la capacidad del tanque?");
 		capacity=sc.nextDouble();
 		
-		shop.addMotorbike(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, bikeOption, capacity, fuelOption);
+		System.out.println(shop.addMotorbike(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, bikeOption, capacity, fuelOption));
 		
 		
 	}
@@ -714,7 +712,7 @@ public class Main{
 
 		int option=-1;
 
-		System.out.println("(1) Vehiculos por rango de años\n"+
+		System.out.println("(1) Vehiculos por rango de anos\n"+
 		"(2) Datos del vehiculo mas antiguo y mas nuevo\n" +
 		"(3) Porcentaje de ocupacion del parqueadero\n" +
 		"(0) Salir del menu del parqueadero");
@@ -760,9 +758,9 @@ public class Main{
 		int minY=0;
 		int maxY=0;
 
-		System.out.println("Ingrese el año minimo de los vehiculos");
+		System.out.println("Ingrese el ano minimo de los vehiculos");
 		minY=sc.nextInt();
-		System.out.println("Ingrese el año maximo de los vehiculos");
+		System.out.println("Ingrese el ano maximo de los vehiculos");
 		maxY=sc.nextInt();
 		System.out.println(shop.BasedYears(minY,maxY));
 

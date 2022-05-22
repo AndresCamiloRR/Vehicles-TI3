@@ -93,7 +93,7 @@ public class GasCar extends Car implements IGas{
 		
 		String msg=super.toString();
 		
-		msg+="\nTiene un consumo de gasolina de: " + GasolineConsumption();
+		msg+="\nTiene un consumo de gasolina de: " + String.format("%.2f", GasolineConsumption());
 		
 		if(typeF==FuelType.CURRENT){
 			
@@ -110,7 +110,7 @@ public class GasCar extends Car implements IGas{
 		}
 		
 		
-		msg+="\nTiene un precio de:" + CalculatePrice()+"\n--------------------------------\n";
+		msg+="\nTiene un precio de:" + String.format("%.2f", CalculatePrice())+"\n--------------------------------\n";
 		
 		return msg;
 		
