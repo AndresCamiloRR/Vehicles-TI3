@@ -583,21 +583,21 @@ public class VehicleDealer{
 						
 						if(vehicles.get(i).getTypeV()==VehicleType.NEW){
 							
-							if(((Motorbike)vehicles.get(i)).getTypeM()!=null){
+							if((vehicles.get(i)) instanceof Motorbike){
 								
-								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Motorbike)vehicles.get(i)).toString());
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Motorbike)(vehicles.get(i))).toString());
 								
-							}else if(((HybridCar)vehicles.get(i)).getTypeOfCharger()==null){
+							}else if((vehicles.get(i)) instanceof GasCar){
 								
-								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((GasCar)vehicles.get(i)).toString());
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((GasCar)(vehicles.get(i))).toString());
 								
-							}else if(((HybridCar)vehicles.get(i)).getTypeF()==null){
+							}else if((vehicles.get(i)) instanceof ElectricCar){
 								
-								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((ElectricCar)vehicles.get(i)).toString());
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((ElectricCar)(vehicles.get(i))).toString());
 								
 							}else{
 								
-								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((HybridCar)vehicles.get(i)).toString());
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+(((HybridCar)vehicles.get(i))).toString());
 								
 							}
 							
