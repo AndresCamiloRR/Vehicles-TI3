@@ -186,10 +186,12 @@ public class Main{
 		
 		
 		
-		System.out.println("Ingrese el precio base del vehiculo");
+		do{
+			System.out.println("Ingrese el precio base del vehiculo");
 		
-		basePrice=sc.nextDouble();
-		
+			basePrice=sc.nextDouble();
+		}while(basePrice<=0);
+
 		System.out.println("Ingrese la marca del vehiculo");
 		
 		brand=sc.next();
@@ -198,30 +200,43 @@ public class Main{
 		
 		model=sc.nextInt();
 		
-		System.out.println("Ingrese el cilindraje del vehiculo");
+		do{
+			System.out.println("Ingrese el cilindraje del vehiculo");
 		
-		cylinderCapacity=sc.nextDouble();
-		
-		System.out.println("El vehiculo es usado? Si(1) No(2)");
-		
-		optionUsed=sc.nextInt();
-		
+			cylinderCapacity=sc.nextDouble();
+		}while(cylinderCapacity<=0);
+
+		do{
+			System.out.println("El vehiculo es usado? Si(1) No(2)");
+			
+			optionUsed=sc.nextInt();
+		}while(optionUsed!=1&&optionUsed!=2);
+
 		if(optionUsed==2){
 			
-			System.out.println("Ingrese el precio de la tecnico mecanica");
-			mechTechPrice=sc.nextDouble();
-				
-			System.out.println("Ingrese el ano de la tecnico mecanica");
-			mechTechYear=sc.nextInt();
-				
-			System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
-			mechTechGasLevels=sc.next();
-			
+			do{
+				System.out.println("Ingrese el precio de la tecnico mecanica");
+				mechTechPrice=sc.nextDouble();
+			}while(mechTechPrice<=0);
+
+			do{
+				System.out.println("Ingrese el ano de la tecnico mecanica");
+				mechTechYear=sc.nextInt();
+			}while(mechTechYear<=0);
+
+			do{
+				System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
+				mechTechGasLevels=sc.next();
+			}while(mechTechGasLevels==null);
+
 		}else{
 			
-			System.out.println("Ingrese la placa del carro");
-			licensePlate=sc.next();
-			
+			do{
+				System.out.println("Ingrese la placa del carro");
+				licensePlate=sc.next();
+			}while(licensePlate==null);
+
+
 			do{
 				System.out.println("Tiene soat? Si(1) No(2)");
 				hasSoat=sc.nextInt();
@@ -229,15 +244,20 @@ public class Main{
 			
 			if(hasSoat==1){
 				
-				System.out.println("Ingrese el precio del soat");
-				soatPrice=sc.nextDouble();
-				
-				System.out.println("Ingrese el ano del soat");
-				soatYear=sc.nextInt();
-				
-				System.out.println("Ingrese la cobertura del soat");
-				soatCoverage=sc.nextDouble();
-				
+				do{
+					System.out.println("Ingrese el precio del soat");
+					soatPrice=sc.nextDouble();
+				}while(soatPrice<=0);
+
+				do{
+					System.out.println("Ingrese el ano del soat");
+					soatYear=sc.nextInt();
+				}while(soatYear<=0);
+
+				do{
+					System.out.println("Ingrese la cobertura del soat");
+					soatCoverage=sc.nextDouble();
+				}while(soatCoverage<=0);
 			}
 			
 			do{
@@ -247,24 +267,35 @@ public class Main{
 			
 			if(hasmechTech==1){
 				
-				System.out.println("Ingrese el precio de la tecnico mecanica");
-				mechTechPrice=sc.nextDouble();
-				
-				System.out.println("Ingrese el ano de la tecnico mecanica");
-				mechTechYear=sc.nextInt();
-				
-				System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
-				mechTechGasLevels=sc.next();
+				do{
+					System.out.println("Ingrese el precio de la tecnico mecanica");
+					mechTechPrice=sc.nextDouble();
+				}while(mechTechPrice<=0);
+	
+				do{
+					System.out.println("Ingrese el ano de la tecnico mecanica");
+					mechTechYear=sc.nextInt();
+				}while(mechTechYear<=0);
+	
+				do{
+					System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
+					mechTechGasLevels=sc.next();
+				}while(mechTechGasLevels==null);
 				
 			}
 			
 			
-			System.out.println("Ingrese el precio de la tarjeta de propiedad");
-			propertyPrice=sc.nextDouble();
-			
-			System.out.println("Ingrese el ano de la tarjeta de propiedad");
-			propertyYear=sc.nextInt();
-			
+			do{
+				System.out.println("Ingrese el precio de la tarjeta de propiedad");
+				propertyPrice=sc.nextDouble();
+			}while(propertyPrice<=0);
+
+
+			do{
+				System.out.println("Ingrese el ano de la tarjeta de propiedad");
+				propertyYear=sc.nextInt();
+			}while(propertyYear<=0);
+
 		}
 		
 		switch(carOrBike) {
@@ -329,21 +360,28 @@ public class Main{
 		int numOfDoors=0;
 		boolean tintedWindows=false;
 		
-		System.out.println("De que tipo es el carro?"+
-		"\nSedan(1)"+
-		"\nCamioneta(2)");
+		do{
+			System.out.println("De que tipo es el carro?"+
+			"\nSedan(1)"+
+			"\nCamioneta(2)");
+			carOption=sc.nextInt();
+		}while(carOption!=1&&carOption!=2);
 		
-		carOption=sc.nextInt();
-		
-		System.out.println("Cual es la capacidad del tanque?");
-		capacity=sc.nextDouble();
-		
-		System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
-		tintedOption=sc.nextInt();
-		
-		System.out.println("Cuantas puertas tiene?");
-		numOfDoors=sc.nextInt();
-		
+		do{
+			System.out.println("Cual es la capacidad del tanque?");
+			capacity=sc.nextDouble();
+		}while(capacity<=0);
+
+		do{
+			System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
+			tintedOption=sc.nextInt();
+		}while(tintedOption!=1 && tintedOption!=2);
+
+		do{
+			System.out.println("Cuantas puertas tiene?");
+			numOfDoors=sc.nextInt();
+		}while(numOfDoors<=0);
+
 		if(tintedOption==1){
 			
 			tintedWindows=true;
@@ -354,13 +392,16 @@ public class Main{
 			
 		}
 		
-		System.out.println("De que tipo es la gasolina?"+
-		"\nCorriente(1)"+
-		"\nExtra(2)"+
-		"\nDiesel(3)");
+		do{
+			System.out.println("De que tipo es la gasolina?"+
+			"\nCorriente(1)"+
+			"\nExtra(2)"+
+			"\nDiesel(3)");
 		
-		fuelOption=sc.nextInt();
+			fuelOption=sc.nextInt();
 		
+		}while(fuelOption!=1&&fuelOption!=2&&fuelOption!=3);
+
 		shop.addGasCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption);
 		
 		
@@ -396,17 +437,22 @@ public class Main{
 		int numOfDoors=0;
 		boolean tintedWindows=false;
 		
-		System.out.println("De que tipo es el carro?"+
-		"\nSedan(1)"+
-		"\nCamioneta(2)");
+		do{
+			System.out.println("De que tipo es el carro?"+
+			"\nSedan(1)"+
+			"\nCamioneta(2)");
+			carOption=sc.nextInt();
+		}while(carOption!=1&&carOption!=2);
 		
-		carOption=sc.nextInt();
-		
-		System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
-		tintedOption=sc.nextInt();
-		
-		System.out.println("Cuantas puertas tiene?");
-		numOfDoors=sc.nextInt();
+		do{
+			System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
+			tintedOption=sc.nextInt();
+		}while(tintedOption!=1 && tintedOption!=2);
+
+		do{
+			System.out.println("Cuantas puertas tiene?");
+			numOfDoors=sc.nextInt();
+		}while(numOfDoors<=0);
 		
 		if(tintedOption==1){
 			
@@ -418,14 +464,18 @@ public class Main{
 			
 		}
 		
-		System.out.println("Ingrese la duración de la bateria");
-		batteryDuration=sc.nextInt();
-		
-		System.out.println("De que tipo es el cargador?"+
-		"\nRapido(1)"+
-		"\nNormal(2)");
-		chargerOption=sc.nextInt();
-		
+		do{
+			System.out.println("Ingrese la duración de la bateria en horas");
+			batteryDuration=sc.nextInt();
+		}while(batteryDuration<=0);
+
+		do{
+			System.out.println("De que tipo es el cargador?"+
+			"\nRapido(1)"+
+			"\nNormal(2)");
+			chargerOption=sc.nextInt();
+		}while(chargerOption!=1&&chargerOption!=2);
+
 		shop.addElectricCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, tintedWindows, chargerOption, batteryDuration);
 		
 		
@@ -462,20 +512,27 @@ public class Main{
 		int numOfDoors=0;
 		boolean tintedWindows=false;
 		
-		System.out.println("De que tipo es el carro?"+
-		"\nSedan(1)"+
-		"\nCamioneta(2)");
+		do{
+			System.out.println("De que tipo es el carro?"+
+			"\nSedan(1)"+
+			"\nCamioneta(2)");
+			carOption=sc.nextInt();
+		}while(carOption!=1&&carOption!=2);
 		
-		carOption=sc.nextInt();
-		
-		System.out.println("Cual es la capacidad del tanque?");
-		capacity=sc.nextDouble();
-		
-		System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
-		tintedOption=sc.nextInt();
-		
-		System.out.println("Cuantas puertas tiene?");
-		numOfDoors=sc.nextInt();
+		do{
+			System.out.println("Cual es la capacidad del tanque?");
+			capacity=sc.nextDouble();
+		}while(capacity<=0);
+
+		do{
+			System.out.println("Tiene los vidirios polarizados? Si(1) No(2)");
+			tintedOption=sc.nextInt();
+		}while(tintedOption!=1 && tintedOption!=2);
+
+		do{
+			System.out.println("Cuantas puertas tiene?");
+			numOfDoors=sc.nextInt();
+		}while(numOfDoors<=0);
 		
 		if(tintedOption==1){
 			
@@ -487,20 +544,29 @@ public class Main{
 			
 		}
 		
-		System.out.println("De que tipo es la gasolina?"+
-		"\nCorriente(1)"+
-		"\nExtra(2)"+
-		"\nDiesel(3)");
+		do{
+			System.out.println("De que tipo es la gasolina?"+
+			"\nCorriente(1)"+
+			"\nExtra(2)"+
+			"\nDiesel(3)");
+		
+			fuelOption=sc.nextInt();
+		
+		}while(fuelOption!=1&&fuelOption!=2&&fuelOption!=3);
 		
 		fuelOption=sc.nextInt();
 		
-		System.out.println("Ingrese la duración de la bateria");
-		batteryDuration=sc.nextInt();
-		
-		System.out.println("De que tipo es el cargador?"+
-		"\nRapido(1)"+
-		"\nNormal(2)");
-		chargerOption=sc.nextInt();
+		do{
+			System.out.println("Ingrese la duración de la bateria en horas");
+			batteryDuration=sc.nextInt();
+		}while(batteryDuration<=0);
+
+		do{
+			System.out.println("De que tipo es el cargador?"+
+			"\nRapido(1)"+
+			"\nNormal(2)");
+			chargerOption=sc.nextInt();
+		}while(chargerOption!=1&&chargerOption!=2);
 		
 		shop.addHybridCar(basePrice, brand, model, cylinderCapacity, mileage, optionUsed, licensePlate, soatPrice, soatYear, soatCoverage, mechTechPrice, mechTechYear, mechTechGasLevels, propertyPrice, propertyYear, carOption, numOfDoors, capacity, tintedWindows, fuelOption, chargerOption, batteryDuration);
 		
@@ -567,29 +633,37 @@ public class Main{
 		int filter=-1;
 		int secondFilter=-1;
 		
-		System.out.println("Con que filtro deseas imprimir la informacion?"+
-		"\nTipo de vehiculo(1)"+
-		"\nTipo de Combustible(2)"+
-		"\nAutos nuevos/usados(3)");
-		filter=sc.nextInt();
-		
+		do{
+			System.out.println("Con que filtro deseas imprimir la informacion?"+
+			"\nTipo de vehiculo(1)"+
+			"\nTipo de Combustible(2)"+
+			"\nAutos nuevos/usados(3)");
+			filter=sc.nextInt();
+		}while(filter!=1&&filter!=2);
+
 		switch(filter){
 			
 			case(1):
-				System.out.println("Carros(1)"+
-				"\nMotos(2)");
-				secondFilter=sc.nextInt();
+				do{
+					System.out.println("Carros(1)"+
+					"\nMotos(2)");
+					secondFilter=sc.nextInt();
+				}while(secondFilter!=1&&secondFilter!=2);
 			break;
 			case(2):
-				System.out.println("Gasolina(1)"+
-				"\nBateria(2)"+
-				"\nHibrido(3)");
-				secondFilter=sc.nextInt();
+				do{
+					System.out.println("Gasolina(1)"+
+					"\nBateria(2)"+
+					"\nHibrido(3)");
+					secondFilter=sc.nextInt();
+				}while(secondFilter!=1&&secondFilter!=2&&secondFilter!=3);
 			break;
 			case(3):
-				System.out.println("Nuevos(1)"+
-				"\nUsados(2)");
-				secondFilter=sc.nextInt();
+				do{
+					System.out.println("Nuevos(1)"+
+					"\nUsados(2)");
+					secondFilter=sc.nextInt();
+				}while(secondFilter!=1&&secondFilter!=2);
 			break;
 			
 			
