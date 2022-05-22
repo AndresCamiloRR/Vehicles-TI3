@@ -581,7 +581,7 @@ public class VehicleDealer{
 				case(1)://Nuevos
 					for(int i=0; i<vehicles.size(); i++){
 						
-						if(vehicles.get(i).getTypeV()==VehicleType.NEW){
+						if((vehicles.get(i)).getTypeV()==VehicleType.NEW){
 							
 							if((vehicles.get(i)) instanceof Motorbike){
 								
@@ -604,6 +604,7 @@ public class VehicleDealer{
 						}
 						
 					}
+				break;
 				case(2)://Usados
 					for(int i=0; i<vehicles.size(); i++){
 						
