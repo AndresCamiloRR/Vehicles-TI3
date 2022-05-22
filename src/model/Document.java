@@ -8,19 +8,19 @@ public class Document{
 	*price double, is a variable of double type that contains the price of the document
 	*/
 	
-	protected double price;
+	private double price;
 	
 	/**
 	*year String, is a variable of String type that contains the year of the document
 	*/
 	
-	protected String year;
+	private int year;
 	
 	/**
 	*picture int, is a matrix of String type that contains a picture of the document number
 	*/
 	
-	protected int[][] picture = new int[4][4];
+	private int[][] picture = new int[4][4];
 	
 	/**
 	*Constructor from objects of Document type
@@ -29,7 +29,7 @@ public class Document{
 	*@return an object of Document type
 	*/
 	
-	public Document(double price, String year){
+	public Document(double price, int year){
 		
 		this.price=price;
 		
@@ -90,6 +90,22 @@ public class Document{
 		
 		return propertyCard;
 		
+	}
+
+	public int getYear(){
+
+		return year;
+
+	}
+	public double getPrice(){
+
+		return price;
+
+	}
+	public int[][] getPicture(){
+
+		return picture;
+
 	}
 	
 }

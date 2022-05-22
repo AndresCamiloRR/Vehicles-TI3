@@ -17,7 +17,7 @@ public class Soat extends Document{
 	*@return an object of Soat type
 	*/
 	
-	public Soat(double price, String year, double coverage){
+	public Soat(double price, int year, double coverage){
 	
 		super(price, year);
 		
@@ -34,22 +34,22 @@ public class Soat extends Document{
 	
 	public String toString(){
 		
-		String soat="El soat tuvo un precio de: " + price + "\nFue comprado en el ano: " + year + "\nTiene una cobertura de: " + coverage + "\nNumero:";
+		String soat="El soat tuvo un precio de: " + getPrice() + "\nFue comprado en el ano: " + getYear() + "\nTiene una cobertura de: " + coverage + "\nNumero:";
 		
-		for(int i=0; i<picture.length; i++){
+		for(int i=0; i<getPicture().length; i++){
 			
 			
-			if(i==picture.length-1){
+			if(i==(getPicture()).length-1){
 				
-				for(int j=0; j<picture[0].length; j++){
+				for(int j=0; j<(getPicture())[0].length; j++){
 					
-					soat+=picture[i][j]+" ";
+					soat+=(getPicture())[i][j]+" ";
 					
 				}
 				
 			}else{
 				
-				soat+=picture[i][0]+" ";
+				soat+=(getPicture())[i][0]+" ";
 				
 			}
 			
@@ -57,9 +57,9 @@ public class Soat extends Document{
 		
 		soat+="\n\nMatriz sin decodificar:\n\n";
 		
-		for (int i=0; i< picture.length; i++ ) { // filas picture.length
-			for (int j = 0; j < picture[0].length; j++) { //columnas picture[0].length
-				soat += picture[i][j] + " ";
+		for (int i=0; i< (getPicture()).length; i++ ) { // filas picture.length
+			for (int j = 0; j < (getPicture())[0].length; j++) { //columnas picture[0].length
+				soat += (getPicture())[i][j] + " ";
 			}
 			soat += "\n";
 		}

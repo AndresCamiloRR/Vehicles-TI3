@@ -30,7 +30,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	*Constructor from objects of HybridCar type
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param typeV VehicleType, it's initialized
@@ -46,7 +46,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	*@return an object of HybridCar type
 	*/
 	
-	public HybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, double capacity, boolean tintedWindows, FuelType typeF, ChargerType typeOfCharger, double batteryDuration){
+	public HybridCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, double capacity, boolean tintedWindows, FuelType typeF, ChargerType typeOfCharger, double batteryDuration){
 		
 		super(basePrice,brand,model,cylinderCapacity,mileage,typeV,licensePlate,documents,typeC,numOfDoors,tintedWindows);
 		
@@ -70,7 +70,7 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	
 	public double GasolineConsumption(){
 		
-		return capacity*(cylinderCapacity/180);
+		return capacity*(getCylinderCapacity()/180);
 		
 	}
 	
@@ -88,12 +88,12 @@ public class HybridCar extends Car implements IGas, IElectricity{
 		
 		if(typeOfCharger==ChargerType.FAST){
 			
-			consumption=batteryDuration*(cylinderCapacity/200);
+			consumption=batteryDuration*(getCylinderCapacity()/200);
 			
 			
 		}else if(typeOfCharger==ChargerType.NORMAL){
 			
-			consumption=(batteryDuration+7)*(cylinderCapacity/200);
+			consumption=(batteryDuration+7)*(getCylinderCapacity()/200);
 			
 		}
 		
@@ -110,23 +110,23 @@ public class HybridCar extends Car implements IGas, IElectricity{
 	
 	public double CalculatePrice(){
 		
-		salePrice=basePrice*1.15;
+		setSalePrice(getBasePrice()*1.15);
 		
 		if(super.Used()){
 			
-			salePrice=salePrice*0.9;
+			setSalePrice(getSalePrice()*0.9);
 			
 		}
 		
 		if(super.ExpiredDocumentation()){
 			
-			salePrice+=500000;
+			setSalePrice(getSalePrice()+500000);
 			
 		}
 		
 		
 		
-		return salePrice;
+		return getSalePrice();
 		
 	}
 	
@@ -176,6 +176,30 @@ public class HybridCar extends Car implements IGas, IElectricity{
 		
 		return msg;
 		
+	}
+
+	public double getCapacity(){
+
+		return capacity;
+
+	}
+
+	public FuelType getTypeF(){
+
+		return typeF;
+
+	}
+
+	public ChargerType getTypeOfCharger(){
+
+		return typeOfCharger;
+
+	}
+
+	public double getBatteryDuration(){
+
+		return batteryDuration;
+
 	}
 	
 }

@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.RowFilter.ComparisonType;
+
 public abstract class Car extends Vehicle{
 	
 	/**
@@ -24,7 +26,7 @@ public abstract class Car extends Vehicle{
 	*Constructor from objects of Car type
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param typeV VehicleType, it's initialized
@@ -36,7 +38,7 @@ public abstract class Car extends Vehicle{
 	*@return an object of Car type
 	*/
 	
-	public Car(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows){
+	public Car(double basePrice, String brand, int model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows){
 		
 		super(basePrice,brand,model,cylinderCapacity,mileage,typeV,licensePlate,documents);
 		
@@ -85,6 +87,24 @@ public abstract class Car extends Vehicle{
 		
 		return msg;
 		
+	}
+
+	public CarType getTypeC(){
+
+		return typeC;
+
+	}
+
+	public int getNumOfDoors(){
+
+		return numOfDoors;
+		
+	}
+
+	public boolean getTintedWindows(){
+
+		return tintedWindows;
+
 	}
 
 }

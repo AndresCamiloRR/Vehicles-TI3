@@ -18,7 +18,7 @@ public class ElectricCar extends Car implements IElectricity{
 	*Constructor from objects of ElectricCar type
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param typeV VehicleType, it's initialized
@@ -32,7 +32,7 @@ public class ElectricCar extends Car implements IElectricity{
 	*@return an object of ElectricCar type
 	*/
 	
-	public ElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows, ChargerType typeOfCharger, double batteryDuration){
+	public ElectricCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, boolean tintedWindows, ChargerType typeOfCharger, double batteryDuration){
 		
 		super(basePrice,brand,model,cylinderCapacity,mileage,typeV,licensePlate,documents,typeC,numOfDoors,tintedWindows);
 		
@@ -55,12 +55,12 @@ public class ElectricCar extends Car implements IElectricity{
 		
 		if(typeOfCharger==ChargerType.FAST){
 			
-			consumption=(batteryDuration+13)*(cylinderCapacity/100);
+			consumption=(batteryDuration+13)*(getCylinderCapacity()/100);
 			
 			
 		}else if(typeOfCharger==ChargerType.NORMAL){
 			
-			consumption=(batteryDuration+18)*(cylinderCapacity/100);
+			consumption=(batteryDuration+18)*(getCylinderCapacity()/100);
 			
 		}
 		
@@ -77,23 +77,23 @@ public class ElectricCar extends Car implements IElectricity{
 	
 	public double CalculatePrice(){
 		
-		salePrice=basePrice*1.2;
+		setSalePrice(getBasePrice()*1.2);
 		
 		if(super.Used()){
 			
-			salePrice=salePrice*0.9;
+			setSalePrice(getSalePrice()*0.9);
 			
 		}
 		
 		if(super.ExpiredDocumentation()){
 			
-			salePrice+=500000;
+			setSalePrice(getSalePrice()+500000);
 			
 		}
 		
 		
 		
-		return salePrice;
+		return getSalePrice();
 		
 	}
 	
@@ -126,6 +126,18 @@ public class ElectricCar extends Car implements IElectricity{
 		
 		return msg;
 		
+	}
+
+	public ChargerType getTypeOfCharger(){
+
+		return typeOfCharger;
+
+	}
+
+	public double getBatteryDuration(){
+
+		return batteryDuration;
+
 	}
 	
 }

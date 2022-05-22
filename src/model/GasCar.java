@@ -18,7 +18,7 @@ public class GasCar extends Car implements IGas{
 	*Constructor from objects of GasCar type
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param typeV VehicleType, it's initialized
@@ -32,7 +32,7 @@ public class GasCar extends Car implements IGas{
 	*@return an object of GasCar type
 	*/
 	
-	public GasCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, double capacity, boolean tintedWindows, FuelType typeF){
+	public GasCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents, CarType typeC, int numOfDoors, double capacity, boolean tintedWindows, FuelType typeF){
 		
 		super(basePrice,brand,model,cylinderCapacity,mileage,typeV,licensePlate,documents,typeC,numOfDoors,tintedWindows);
 		
@@ -51,7 +51,7 @@ public class GasCar extends Car implements IGas{
 	
 	public double GasolineConsumption(){
 		
-		return capacity*(cylinderCapacity/150);
+		return capacity*(getCylinderCapacity()/150);
 		
 	}
 	
@@ -64,21 +64,21 @@ public class GasCar extends Car implements IGas{
 	
 	public double CalculatePrice(){
 		
-		salePrice=basePrice;
+		setSalePrice(getBasePrice());
 		
 		if(super.Used()){
 			
-			salePrice=salePrice*0.9;
+			setSalePrice(getSalePrice()*0.9);
 			
 		}
 		
 		if(super.ExpiredDocumentation()){
 			
-			salePrice+=500000;
+			setSalePrice(getSalePrice()+500000);
 			
 		}
 		
-		return salePrice;
+		return getSalePrice();
 		
 	}
 	
@@ -114,6 +114,18 @@ public class GasCar extends Car implements IGas{
 		
 		return msg;
 		
+	}
+
+	public double getCapacity(){
+
+		return capacity;
+
+	}
+
+	public FuelType getTypeF(){
+
+		return typeF;
+
 	}
 	
 }

@@ -63,6 +63,8 @@ public class Main{
 				"Seleccione una opcion para empezar\n" +
 				"(1) Para registrar un vehiculo\n" +
 				"(2) Para ver los informes de los vehiculos\n"+
+				"(3) Datos de los documentos\n" +
+				"(4) Mostrar el parqueadero\n" +
 				"(0) Para salir"
 				);
 		option= sc.nextInt();
@@ -77,8 +79,6 @@ public class Main{
 	
 	public void executeOperation(int operation) {
 		
-		boolean replace=false;
-		int replaceId=-1;
 		
 		switch(operation) {
 		case 0:
@@ -90,8 +90,14 @@ public class Main{
 		case 2:
 			WichInfoV();
 			break;
+		case 3:
+			DocumentsInfo();
+			break;
+		case 4:
+			Parking();
+			break;
 		default:
-			System.out.println("Error, opción no válida");
+			System.out.println("Error, opcion no valida");
 		
 		}
 	}
@@ -149,7 +155,7 @@ public class Main{
 		
 		double basePrice=-1;
 		String brand=null;
-		String model=null;
+		int model=0;
 		double cylinderCapacity=-1;
 		double mileage=0;
 		String licensePlate=null;
@@ -160,19 +166,19 @@ public class Main{
 		//Soat
 		int hasSoat=0;
 		double soatPrice=-1;
-		String soatYear=null;
+		int soatYear=0;
 		double soatCoverage=-1;
 		
 		
 		//TecnicoMecanica
 		int hasmechTech=0;
 		double mechTechPrice=-1;
-		String mechTechYear=null;
+		int mechTechYear=0;
 		String mechTechGasLevels=null;
 		
 		//T de propiedad
 		double propertyPrice=-1;
-		String propertyYear=null;
+		int propertyYear=0;
 		
 		
 		//Usado
@@ -190,7 +196,7 @@ public class Main{
 		
 		System.out.println("Ingrese el modelo del vehiculo");
 		
-		model=sc.next();
+		model=sc.nextInt();
 		
 		System.out.println("Ingrese el cilindraje del vehiculo");
 		
@@ -206,7 +212,7 @@ public class Main{
 			mechTechPrice=sc.nextDouble();
 				
 			System.out.println("Ingrese el ano de la tecnico mecanica");
-			mechTechYear=sc.next();
+			mechTechYear=sc.nextInt();
 				
 			System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
 			mechTechGasLevels=sc.next();
@@ -227,7 +233,7 @@ public class Main{
 				soatPrice=sc.nextDouble();
 				
 				System.out.println("Ingrese el ano del soat");
-				soatYear=sc.next();
+				soatYear=sc.nextInt();
 				
 				System.out.println("Ingrese la cobertura del soat");
 				soatCoverage=sc.nextDouble();
@@ -245,7 +251,7 @@ public class Main{
 				mechTechPrice=sc.nextDouble();
 				
 				System.out.println("Ingrese el ano de la tecnico mecanica");
-				mechTechYear=sc.next();
+				mechTechYear=sc.nextInt();
 				
 				System.out.println("Ingrese el nivel de los gases de la tecnico mecanica");
 				mechTechGasLevels=sc.next();
@@ -257,7 +263,7 @@ public class Main{
 			propertyPrice=sc.nextDouble();
 			
 			System.out.println("Ingrese el ano de la tarjeta de propiedad");
-			propertyYear=sc.next();
+			propertyYear=sc.nextInt();
 			
 		}
 		
@@ -296,22 +302,22 @@ public class Main{
 	*Method that ask the user for the missing attributes of a GasCar and send them as parameters to the addGasCar method in controller class
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*/
 	
-	public void addGasCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
+	public void addGasCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear){
 		
 		int carOption=0;
 		int tintedOption=0;
@@ -364,22 +370,22 @@ public class Main{
 	*Method that ask the user for the missing attributes of a ElectricCar and send them as parameters to the addElectricCar method in controller class
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*/
 	
-	public void addElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
+	public void addElectricCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear){
 		
 		
 		int carOption=0;
@@ -429,22 +435,22 @@ public class Main{
 	*Method that ask the user for the missing attributes of a HybridCar and send them as parameters to the addHybridCar method in controller class
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*/
 	
-	public void addHybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
+	public void addHybridCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear){
 		
 		int carOption=0;
 		int tintedOption=0;
@@ -505,28 +511,27 @@ public class Main{
 	*Method that ask the user for the missing attributes of a Motorbike and send them as parameters to the addMotorbike method in controller class
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*/
 	
-	public void addMotorbike(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear){
+	public void addMotorbike(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear){
 		
 		int bikeOption=0;
 		int fuelOption=0;
 		
 		double capacity=-1;
-		boolean tintedWindows=false;
 		
 		System.out.println("De que tipo es la moto?"+
 		"\nEstandar(1)"+
@@ -593,4 +598,120 @@ public class Main{
 		System.out.println(shop.PrintInfo(filter, secondFilter));
 		
 	}
+
+	/**
+	*Method that will ask for the id of the vehicle of which the user wants to know the status of their documents
+	*/
+
+	public void DocumentsInfo(){
+
+		int id=-1;
+
+		System.out.println("Ingrese el id del vehiculo del que desea conocer el estado de los documentos");
+
+		id=sc.nextInt();
+
+		System.out.println(shop.infoWithId(id));
+	}
+
+	/**
+	*Method that will print the parking, deploy the parking menu and ask the user for what we wants
+	*/
+
+	public void Parking(){
+
+		System.out.println(shop.printParking());
+
+		int option=-1;
+
+		do{
+			option = ParkingMenu();
+			executeParkingOperation(option);
+			
+		}while (option!=0);
+
+	}
+
+	/**
+	*Method that creates the parking menu
+	*/
+
+	public int ParkingMenu(){
+
+		int option=-1;
+
+		System.out.println("(1) Vehiculos por rango de años\n"+
+		"(2) Datos del vehiculo mas antiguo y mas nuevo\n" +
+		"(3) Porcentaje de ocupacion del parqueadero\n" +
+		"(0) Salir del menu del parqueadero");
+
+		option= sc.nextInt();
+		sc.nextLine();
+		return option;
+	}
+	
+	/**
+	*Method that based on the parameter operation will call the method that can fulfill the request
+	*@param operation int that contains the choice made by the user
+	*/
+	
+	public void executeParkingOperation(int operation) {
+		
+		
+		switch(operation) {
+		case 0:
+			System.out.println("Regresaremos al menu principal");
+			break;
+		case 1:
+			YearsVehicles();
+			break;
+		case 2:
+			OldestRecentVehicles();
+			break;
+		case 3:
+			ShowPercentage();
+			break;
+		default:
+			System.out.println("Error, opcion no valida");
+		
+		}
+	}
+
+	/**
+	*Method that will ask the user for years and print the vehicles of the parking that are between the years
+	*/
+
+	public void YearsVehicles(){
+
+		int minY=0;
+		int maxY=0;
+
+		System.out.println("Ingrese el año minimo de los vehiculos");
+		minY=sc.nextInt();
+		System.out.println("Ingrese el año maximo de los vehiculos");
+		maxY=sc.nextInt();
+		System.out.println(shop.BasedYears(minY,maxY));
+
+	}
+
+	/**
+	*Method that will print the percentage of occupation of the parking lot
+	*/
+
+	public void ShowPercentage(){
+
+		System.out.println("El porcentaje de ocupacion del parqueadero es de: " + shop.ParkingPercentage() + "%\n\n");
+
+	}
+
+	/**
+	*Method that will print the oldest and most recent vehicles of the parking
+	*/
+
+	public void OldestRecentVehicles(){
+
+		System.out.println(shop.oldestVehicle()+"\n\n\n\n"+shop.recentVehicle());
+
+	}
+	
 }

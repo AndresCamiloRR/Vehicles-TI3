@@ -1,5 +1,6 @@
 package model;
 
+import java.time.Year;
 import java.util.ArrayList;
 
 public class VehicleDealer{
@@ -20,7 +21,7 @@ public class VehicleDealer{
 	*parkingLot Vehicle[][], is a matrix of Vehicle that contains the vehicles parked in the parking lot
 	*/
 	
-	private Vehicle[][] parkingLot;
+	private Vehicle[][] parkingLot= new Vehicle[10][5];;
 	
 	/**
 	*documents Document[], is a variable of Document type that contains the documents of the vehicle like soat, technical mechanical review and property card
@@ -49,26 +50,33 @@ public class VehicleDealer{
 	public VehicleDealer(ArrayList<Vehicle> vehicles){
 		
 		this.vehicles = vehicles;
-		
+		for(int i=0; i<vehicles.size();i++){
+			
+			if((vehicles.get(i)).getTypeV()==VehicleType.USED){
+				toParking(vehicles.get(i));
+			}
+		}
+		newDocs = null;
+
 	}
 	
 	/**
 	*Method that creates a Document array and uses it, and the other parameters to create an object of GasCar type and send it to the vehicles array
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*@param carOption int, it's initialized
 	*@param numOfDoors int, it's initialized
 	*@param capacity double, it's initialized
@@ -77,7 +85,7 @@ public class VehicleDealer{
 	*@return an String to confirm that the vehicle was added
 	*/
 	
-	public String addGasCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption){
+	public String addGasCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption){
 		
 		VehicleType typeV=null;
 		
@@ -85,6 +93,8 @@ public class VehicleDealer{
 		
 		FuelType typeF=null;
 		
+		String out="";
+
 		if(optionUsed==1){
 			
 			typeV=VehicleType.USED;
@@ -121,7 +131,7 @@ public class VehicleDealer{
 		
 		newDocs= new Document[3];
 		
-		if(soatYear!=null){
+		if(soatYear!=0){
 			
 			
 			newDocs[soatPlace]= new Soat(soatPrice, soatYear, soatCoverage);
@@ -129,13 +139,13 @@ public class VehicleDealer{
 		}
 		
 		
-		if(mechTechYear!=null){
+		if(mechTechYear!=0){
 			
 			newDocs[mechTechPlace] = new MechTechReview(mechTechPrice, mechTechYear, mechTechGasLevels);
 			
 		}
 		
-		if(propertyYear!=null){
+		if(propertyYear!=0){
 			
 			newDocs[propertyCardPlace] = new Document(propertyPrice,propertyYear);
 			
@@ -143,26 +153,34 @@ public class VehicleDealer{
 		
 		vehicles.add(new GasCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF));
 		
-		return("El carro de gasolina ha sido añadido");
+		out="El carro de gasolina ha sido añadido\n\n";
+
+		if(typeV==VehicleType.USED){
+			
+			out+=toParking(new GasCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF));
+		
+		}
+		
+		return out;
 	}
 	
 	/**
 	*Method that creates a Document array and uses it, and the other parameters to create an object of ElectricCar type and send it to the vehicles array
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*@param carOption int, it's initialized
 	*@param numOfDoors int, it's initialized
 	*@param tintedWindows boolean, it's initialized
@@ -171,12 +189,14 @@ public class VehicleDealer{
 	*@return an String to confirm that the vehicle was added
 	*/
 	
-	public String addElectricCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, boolean tintedWindows, int chargerOption, double batteryDuration){
+	public String addElectricCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear, int carOption, int numOfDoors, boolean tintedWindows, int chargerOption, double batteryDuration){
 		
 		VehicleType typeV=null;
 		
 		ChargerType typeOfCharger=null;
 		
+		String out="";
+
 		if(optionUsed==1){
 			
 			typeV=VehicleType.USED;
@@ -211,7 +231,7 @@ public class VehicleDealer{
 		
 		newDocs= new Document[3];
 		
-		if(soatYear!=null){
+		if(soatYear!=0){
 			
 			
 			newDocs[soatPlace]= new Soat(soatPrice, soatYear, soatCoverage);
@@ -219,13 +239,13 @@ public class VehicleDealer{
 		}
 		
 		
-		if(mechTechYear!=null){
+		if(mechTechYear!=0){
 			
 			newDocs[mechTechPlace] = new MechTechReview(mechTechPrice, mechTechYear, mechTechGasLevels);
 			
 		}
 		
-		if(propertyYear!=null){
+		if(propertyYear!=0){
 			
 			newDocs[propertyCardPlace] = new Document(propertyPrice,propertyYear);
 			
@@ -234,27 +254,35 @@ public class VehicleDealer{
 		
 		vehicles.add(new ElectricCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, tintedWindows, typeOfCharger, batteryDuration));
 		
+		out="El carro electrico ha sido añadido\n\n";
+
+		if(typeV==VehicleType.USED){
+			
+			out+=toParking(new ElectricCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, tintedWindows, typeOfCharger, batteryDuration));
 		
-		return("El carro electrico ha sido añadido");
+		}
+
+
+		return out;
 	}
 	
 	/**
 	*Method that creates a Document array and uses it, and the other parameters to create an object of HybridCar type and send it to the vehicles array
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
+	*@param propertyYear int, it's initialized
 	*@param carOption int, it's initialized
 	*@param numOfDoors int, it's initialized
 	*@param capacity double, it's initialized
@@ -265,11 +293,13 @@ public class VehicleDealer{
 	*@return an String to confirm that the vehicle was added
 	*/
 	
-	public String addHybridCar(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption, int chargerOption, double batteryDuration){
+	public String addHybridCar(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear, int carOption, int numOfDoors, double capacity, boolean tintedWindows, int fuelOption, int chargerOption, double batteryDuration){
 		
 		VehicleType typeV=null;
 		
 		CarType typeC=null;
+
+		String out="";
 		
 		if(optionUsed==1){
 			
@@ -321,7 +351,7 @@ public class VehicleDealer{
 		
 		newDocs= new Document[3];
 		
-		if(soatYear!=null){
+		if(soatYear!=0){
 			
 			
 			newDocs[soatPlace]= new Soat(soatPrice, soatYear, soatCoverage);
@@ -329,13 +359,13 @@ public class VehicleDealer{
 		}
 		
 		
-		if(mechTechYear!=null){
+		if(mechTechYear!=0){
 			
 			newDocs[mechTechPlace] = new MechTechReview(mechTechPrice, mechTechYear, mechTechGasLevels);
 			
 		}
 		
-		if(propertyYear!=null){
+		if(propertyYear!=0){
 			
 			newDocs[propertyCardPlace] = new Document(propertyPrice,propertyYear);
 			
@@ -343,44 +373,50 @@ public class VehicleDealer{
 		
 		vehicles.add(new HybridCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF, typeOfCharger, batteryDuration));
 		
-		return("El carro hibrido ha sido añadido");
+		out="El carro hibrido ha sido añadido\n\n";
+
+		if(typeV==VehicleType.USED){
+			
+			out+=toParking(new HybridCar(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs, typeC, numOfDoors, capacity, tintedWindows, typeF, typeOfCharger, batteryDuration));
+		
+		}
+		
+		return out;
 		
 	}
 	
 	/**
-	*Constructor from objects of Vehicle type
+	*Method that creates a Document array and uses it, and the other parameters to create an object of Motorbike type and send it to the vehicles array
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param optionUsed int, it's initialized
 	*@param licensePlate String, it's initialized
 	*@param soatPrice double, it's initialized
-	*@param soatYear String, it's initialized
+	*@param soatYear int, it's initialized
 	*@param soatCoverage double, it's initialized
 	*@param mechTechPrice double, it's initialized
-	*@param mechTechYear String, it's initialized
+	*@param mechTechYear int, it's initialized
 	*@param mechTechGasLevels String, it's initialized
 	*@param propertyPrice double, it's initialized
-	*@param propertyYear String, it's initialized
-	*@param carOption int, it's initialized
-	*@param numOfDoors int, it's initialized
+	*@param propertyYear int, it's initialized
+	*@param bikeOption int, it's initialized
 	*@param capacity double, it's initialized
-	*@param tintedWindows boolean, it's initialized
 	*@param fuelOption int, it's initialized
-	*@param chargerOption int, it's initialized
-	*@param batteryDuration double, it's initialized
 	*@return an String to confirm that the vehicle was added
 	*/
 	
-	public String addMotorbike(double basePrice, String brand, String model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, String soatYear, double soatCoverage, double mechTechPrice, String mechTechYear, String mechTechGasLevels, double propertyPrice, String propertyYear, int bikeOption, double capacity,int fuelOption){
+	public String addMotorbike(double basePrice, String brand, int model, double cylinderCapacity, double mileage, int optionUsed, String licensePlate, double soatPrice, int soatYear, double soatCoverage, double mechTechPrice, int mechTechYear, String mechTechGasLevels, double propertyPrice, int propertyYear, int bikeOption, double capacity,int fuelOption){
 		
 		VehicleType typeV=null;
 		
 		MotorbikeType typeM=null;
 		
 		FuelType typeF=null;
+
+		String out="";
 		
 		if(optionUsed==1){
 			
@@ -423,7 +459,7 @@ public class VehicleDealer{
 		
 		newDocs= new Document[3];
 		
-		if(soatYear!=null){
+		if(soatYear!=0){
 			
 			
 			newDocs[soatPlace]= new Soat(soatPrice, soatYear, soatCoverage);
@@ -431,13 +467,13 @@ public class VehicleDealer{
 		}
 		
 		
-		if(mechTechYear!=null){
+		if(mechTechYear!=0){
 			
 			newDocs[mechTechPlace] = new MechTechReview(mechTechPrice, mechTechYear, mechTechGasLevels);
 			
 		}
 		
-		if(propertyYear!=null){
+		if(propertyYear!=0){
 			
 			newDocs[propertyCardPlace] = new Document(propertyPrice,propertyYear);
 			
@@ -445,8 +481,15 @@ public class VehicleDealer{
 		
 		vehicles.add(new Motorbike(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs,typeM,capacity,typeF));
 		
-		return ("La moto ha sido agregada");
-		
+		out="La moto ha sido agregada\n\n";
+
+		if(typeV==VehicleType.USED){
+			
+			out+=toParking(new Motorbike(basePrice, brand, model, cylinderCapacity, mileage, typeV, licensePlate, newDocs,typeM,capacity,typeF));
+
+		}
+
+		return out;
 	}
 	
 	/**
@@ -457,10 +500,6 @@ public class VehicleDealer{
 	*/
 	
 	public String PrintInfo(int filter, int secondFilter){
-		
-		FuelType filterF=null;
-		
-		VehicleType filterV=null;
 		
 		String msg="Lista de vehiculos:\n\n";
 		
@@ -473,7 +512,7 @@ public class VehicleDealer{
 						
 						if(vehicles.get(i) instanceof Car){
 							
-							msg+=((Car)vehicles.get(i)).toString();
+							msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Car)vehicles.get(i)).toString());
 							
 						}
 						
@@ -484,7 +523,7 @@ public class VehicleDealer{
 						
 						if(vehicles.get(i) instanceof Motorbike){
 							
-							msg+=((Motorbike)vehicles.get(i)).toString();
+							msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Motorbike)vehicles.get(i)).toString());
 							
 						}
 						
@@ -501,11 +540,11 @@ public class VehicleDealer{
 							
 							if(((Motorbike)vehicles.get(i)).typeM==null){
 								
-								msg+=((Car)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Car)vehicles.get(i)).toString());
 								
 							}else{
 								
-								msg+=((Motorbike)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Motorbike)vehicles.get(i)).toString());
 								
 							}
 							
@@ -518,7 +557,7 @@ public class VehicleDealer{
 						
 						if(vehicles.get(i) instanceof ElectricCar){
 							
-							msg+=((ElectricCar)vehicles.get(i)).toString();
+							msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((ElectricCar)vehicles.get(i)).toString());
 							
 						}
 						
@@ -529,7 +568,7 @@ public class VehicleDealer{
 						
 						if(vehicles.get(i) instanceof HybridCar){
 							
-							msg+=((HybridCar)vehicles.get(i)).toString();
+							msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((HybridCar)vehicles.get(i)).toString());
 							
 						}
 						
@@ -542,23 +581,23 @@ public class VehicleDealer{
 				case(1)://Nuevos
 					for(int i=0; i<vehicles.size(); i++){
 						
-						if(vehicles.get(i).typeV==VehicleType.NEW){
+						if(vehicles.get(i).getTypeV()==VehicleType.NEW){
 							
-							if(((Motorbike)vehicles.get(i)).typeM!=null){
+							if(((Motorbike)vehicles.get(i)).getTypeM()!=null){
 								
-								msg+=((Motorbike)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((Motorbike)vehicles.get(i)).toString());
 								
-							}else if(((HybridCar)vehicles.get(i)).typeOfCharger==null){
+							}else if(((HybridCar)vehicles.get(i)).getTypeOfCharger()==null){
 								
-								msg+=((GasCar)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((GasCar)vehicles.get(i)).toString());
 								
-							}else if(((HybridCar)vehicles.get(i)).typeF==null){
+							}else if(((HybridCar)vehicles.get(i)).getTypeF()==null){
 								
-								msg+=((ElectricCar)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((ElectricCar)vehicles.get(i)).toString());
 								
 							}else{
 								
-								msg+=((HybridCar)vehicles.get(i)).toString();
+								msg+=("Vehiculo con id: " + (i+1) + "\n\n"+((HybridCar)vehicles.get(i)).toString());
 								
 							}
 							
@@ -568,9 +607,9 @@ public class VehicleDealer{
 				case(2)://Usados
 					for(int i=0; i<vehicles.size(); i++){
 						
-						if(vehicles.get(i).typeV==VehicleType.USED){
+						if(vehicles.get(i).getTypeV()==VehicleType.USED){
 							
-							msg+=vehicles.get(i).toString();
+							msg+=("Vehiculo con id: " + (i+1) + "\n\n"+vehicles.get(i).toString());
 							
 						}
 						
@@ -590,5 +629,435 @@ public class VehicleDealer{
 		
 	}
 	
+	/**
+	*Method that gets the documents info from a vehicle, based on his id
+	*@param id int, contains the position of the array list where the vehicle is located
+	*@return an String with the documents info
+	*/
+
+	public String infoWithId(int id){
+
+		String msg="";
+
+		if(id<=vehicles.size()&&id>0){
+
+			msg="Vehiculo con id: " + (id) + "\n\n"+vehicles.get(id-1).Documents();
+
+		}else{
+
+			msg="El vehiculo no fue encontrado";
+
+		}
+
+		return msg;
+
+	}
+
+	/**
+	*Method that calls methods to add a vehicle in the parking, if it fulfills the conditions and if there's space
+	*@param vehicletoAdd Vehicle, and object of vehicle type that contains the vehicle that will be added to parking
+	*@return an String wich will tell if the car was or wasn't sent to the parking
+	*/
+
+	public String toParking (Vehicle vehicleToAdd){
+
+		String msg="";
+
+		if (vehicleToAdd.getModel()<=2014){
+
+			int[] emptyPlace = ParkingSpace(vehicleToAdd.getModel());
+
+			if(emptyPlace[0]!=-1){
+
+				addToParking(vehicleToAdd, emptyPlace);
+				msg="El vehiculo ha sido guardado";
+
+			}else if(emptyPlace[0]==-1){
+
+				msg="Lo sentimos pero no hay espacio en el parqueadero";
+
+			}else{
+
+				msg="El año del vehiculo es " + vehicleToAdd.getModel() + " por lo que no puede ingresar en el parqueadero";
+
+			}
+
+		}
+
+		return msg;
+	}
+
+	/**
+	*Method that search for spaces in the parking based on the model/year of the vehicle
+	*@param model int, contains the model/year of the vehicle that we want to add
+	*@return an int with the empty position or -1 if there's no space
+	*/
+
+	public int[] ParkingSpace (int model){
+
+		int[] emptyPlace= new int[2];
+
+		emptyPlace[1]=-1;
+		emptyPlace[0]=-1;
+
+		switch(model){
+
+			case 2014:
+				emptyPlace[1]=0;
+			break;
+
+			case 2013:
+				emptyPlace[1]=1;
+			break;
+
+			case 2012:
+				emptyPlace[1]=2;
+			break;
+
+			case 2011:
+				emptyPlace[1]=3;
+			break;
+
+			default:
+				emptyPlace[1]=4;
+			break;
+		}
+
+		if(emptyPlace[1]!=-1){
+
+			for(int i=0; i<parkingLot.length; i++){
+
+				if(parkingLot[i][emptyPlace[1]]==null){
+
+					emptyPlace[0]=i;
+
+				}
+
+			}
+
+		}
+
+		return emptyPlace;
+
+	}
+
+	/**
+	*Method that adds a vehicle in the parking
+	*@param vehicletoAdd Vehicle, it is the vehicle we want to add
+	*@param emptyPlace int[][], it an array of two positions that contains the [i] and [j] were the vehicle will be sent
+	*/
+
+	public void addToParking(Vehicle vehicletoAdd, int[] emptyPlace){
+
+		parkingLot[emptyPlace[0]][emptyPlace[1]]=vehicletoAdd;
+
+	}
 	
+	/**
+	*Method that adds a vehicle in the parking
+	*@return String with the form of the parking, the occupied and free places
+	*/
+
+	public String printParking(){
+
+		String parking=" GC -> Carro de Gasolina\n EC -> Carro Electrico\n HC -> Carro Hibrido\n GM -> Moto de Gasolina\n";
+
+		parking+="|    2014   |    2013   |    2012   |    2011   |   <2011   |\n";
+
+		parking+="-------------------------------------------------------------\n";
+
+		for(int i=0; i<parkingLot.length;i++){
+
+
+			for(int j=0; j<parkingLot[0].length;j++){
+
+
+				if(parkingLot[i][j]!=null){
+
+					if(parkingLot[i][j] instanceof GasCar){
+
+						parking+="|     GC    ";
+
+					}
+	
+					if(parkingLot[i][j] instanceof ElectricCar){
+	
+						parking+="|     EC    ";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof HybridCar){
+	
+						parking+="|     HC    ";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof Motorbike){
+	
+						parking+="|     GM    ";
+	
+					}
+
+
+
+				}else{
+
+					parking+="|           ";
+
+				}
+
+			}
+	
+			parking+="|\n";
+
+			parking+="-------------------------------------------------------------";
+
+			parking+="\n";
+
+		}
+
+		return parking;
+	}
+
+	/**
+	*Method that calculates the percentage of occupation of the parking lot
+	*@return double with the percentage
+	*/
+
+	public double ParkingPercentage(){
+
+		double numOfVehicles=0;
+
+		double numOfSpaces=0;
+
+		for(int i=0; i<parkingLot.length; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null){
+
+					numOfVehicles++;
+
+				}
+
+				numOfSpaces++;
+
+			}
+
+
+		}
+
+		return(numOfVehicles/numOfSpaces)*100;
+
+	}
+
+	/**
+	*Method that gets the info from all the vehicles that are between the years selected by the user
+	*@param minY int, it's initialized
+	*@param maxY int, it's initialized
+	*@return an String with the vehicles between the years
+	*/
+
+	public String BasedYears(int minY, int maxY){
+
+		String yearsVehicles="";
+
+		boolean flag=true;
+
+		for(int i=0; i<parkingLot.length&&flag; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null&&parkingLot[i][j].getModel()>=minY && parkingLot[i][j].getModel()<=maxY ){
+
+					if(parkingLot[i][j] instanceof GasCar){
+
+						yearsVehicles+=((GasCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof ElectricCar){
+	
+						yearsVehicles+=((ElectricCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof HybridCar){
+	
+						yearsVehicles+=((HybridCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof Motorbike){
+	
+						yearsVehicles+=((Motorbike)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+
+				}
+
+			}
+
+		}
+
+		if(yearsVehicles.equals("")){
+
+			yearsVehicles="No hay vehiculos en el parqueadero en el rango de años elegidos\n\n";
+
+		}
+
+		return yearsVehicles;
+
+	}
+
+	/**
+	*Method that gets the info from the oldest vehicle/vehicles in the parking lot
+	*@return an String with the oldest vehicle/vehicles info
+	*/
+
+	public String oldestVehicle(){
+
+		double oldestYear=-1;
+
+		String oldestVehicles="";
+
+		for(int i=0; i<parkingLot.length; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null && (oldestYear==-1||parkingLot[i][j].getModel()<oldestYear)){
+
+					oldestYear=(parkingLot[i][j]).getModel();
+
+				}
+
+			}
+
+		}
+
+		if(oldestYear!=-1){
+
+			oldestVehicles="Los vehiculos mas antiguos del parqueadero son: \n\n";
+
+		}else{
+
+			oldestVehicles="Lo sentimos pero no hay vehiculos en el parqueadero\n";
+
+		}
+
+		for(int i=0; i<parkingLot.length; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null&&(parkingLot[i][j]).getModel()==oldestYear){
+
+					if(parkingLot[i][j] instanceof GasCar){
+
+						oldestVehicles+=((GasCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof ElectricCar){
+	
+						oldestVehicles+=((ElectricCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof HybridCar){
+	
+						oldestVehicles+=((HybridCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof Motorbike){
+	
+						oldestVehicles+=((Motorbike)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+
+				}
+
+			}
+
+		}
+
+		return oldestVehicles;
+
+	}
+
+	/**
+	*Method that gets the info from the most recent vehicle/vehicles in the parking lot
+	*@return an String with the most recent vehicle/vehicles info
+	*/
+
+	public String recentVehicle(){
+
+		double recentYear=-1;
+
+		String recentVehicles="";
+
+		for(int i=0; i<parkingLot.length; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null && (recentYear==-1||(parkingLot[i][j]).getModel()>recentYear)){
+
+					recentYear=(parkingLot[i][j]).getModel();
+
+				}
+
+			}
+
+		}
+
+		if(recentYear!=-1){
+
+			recentVehicles="Los vehiculos mas recientes del parqueadero son: \n\n";
+
+		}else{
+
+			recentVehicles="Lo sentimos pero no hay vehiculos en el parqueadero\n";
+
+		}
+
+		for(int i=0; i<parkingLot.length; i++){
+
+			for(int j=0; j<parkingLot[0].length; j++){
+
+				if(parkingLot[i][j]!=null&&(parkingLot[i][j]).getModel()==recentYear){
+
+					if(parkingLot[i][j] instanceof GasCar){
+
+						recentVehicles+=((GasCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof ElectricCar){
+	
+						recentVehicles+=((ElectricCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof HybridCar){
+	
+						recentVehicles+=((HybridCar)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+	
+					if(parkingLot[i][j] instanceof Motorbike){
+	
+						recentVehicles+=((Motorbike)parkingLot[i][j]).toString()+"\n\n";
+	
+					}
+
+				}
+
+			}
+
+		}
+
+		return recentVehicles;
+
+	}
+
 }

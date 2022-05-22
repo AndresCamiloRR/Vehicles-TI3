@@ -16,7 +16,7 @@ public class MechTechReview extends Document{
 	*@return an object of Document type
 	*/
 	
-	public MechTechReview(double price, String year, String gasLevels){
+	public MechTechReview(double price, int year, String gasLevels){
 	
 		super(price, year);
 		
@@ -33,29 +33,29 @@ public class MechTechReview extends Document{
 	
 	public String toString(){
 		
-		String mechTech="La revision tecnico mecanica tuvo un precio de: " + price + "\nFue comprado en el ano: " + year + "\nY el nivel de los gases es: " + gasLevels + "\nNumero:";
+		String mechTech="La revision tecnico mecanica tuvo un precio de: " + getPrice() + "\nFue comprado en el ano: " + getYear() + "\nY el nivel de los gases es: " + gasLevels + "\nNumero:";
 		
-		for(int i=0; i<picture.length; i++){
+		for(int i=0; i<(getPicture()).length; i++){
 			
 			if(i==0){
 				
-				for(int j=0; j<picture[0].length; j++){
+				for(int j=0; j<(getPicture())[0].length; j++){
 					
-					mechTech+=picture[i][j]+" ";
+					mechTech+=(getPicture())[i][j]+" ";
 					
 				}
 				
-			}else if(i==picture.length-1){
+			}else if(i==(getPicture()).length-1){
 				
-				for(int j=0; j<picture[0].length; j++){
+				for(int j=0; j<(getPicture())[0].length; j++){
 					
-					mechTech+=picture[i][j]+" ";
+					mechTech+=(getPicture())[i][j]+" ";
 					
 				}
 				
 			}else{
 				
-				mechTech+=picture[i][picture.length-i-1]+" ";
+				mechTech+=(getPicture())[i][(getPicture()).length-i-1]+" ";
 				
 			}
 			
@@ -64,9 +64,9 @@ public class MechTechReview extends Document{
 		
 		mechTech+="\n\nMatriz sin decodificar:\n\n";
 		
-		for (int i=0; i< picture.length; i++ ) { // filas picture.length
-			for (int j = 0; j < picture[0].length; j++) { //columnas picture[0].length
-				mechTech += picture[i][j] + " ";
+		for (int i=0; i< (getPicture()).length; i++ ) { // filas picture.length
+			for (int j = 0; j < (getPicture())[0].length; j++) { //columnas picture[0].length
+				mechTech += (getPicture())[i][j] + " ";
 			}
 			mechTech += "\n";
 		}

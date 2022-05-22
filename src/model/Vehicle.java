@@ -2,7 +2,7 @@ package model;
 
 public abstract class Vehicle implements ICalculatePrice{
 	
-	public final String ACTUALYEAR="2022";
+	public final int ACTUALYEAR=2022;
 	
 	public int numOfDocuments=3;
 	
@@ -16,61 +16,61 @@ public abstract class Vehicle implements ICalculatePrice{
 	*basePrice double, is a variable of double type that contains the original price of the vehicle
 	*/
 	
-	protected double basePrice;
+	private double basePrice;
 	
 	/**
 	*basePrice double, is a variable of double type that contains the sale price of the vehicle
 	*/
 	
-	protected double salePrice;
+	private double salePrice=0;
 	
 	/**
 	*brand String, is a variable of String type that contains the brand of the vehicle
 	*/
 	
-	protected String brand;
+	private String brand;
 	
 	/**
-	*model String, is a variable of String type that contains the model/year of the vehicle
+	*model int, is a variable of int type that contains the model/year of the vehicle
 	*/
 	
-	protected String model;
+	private int model;
 	
 	/**
 	*cylinderCapacity double, is a variable of double type that contains the cylinderCapacity of the vehicle
 	*/
 	
-	protected double cylinderCapacity;
+	private double cylinderCapacity;
 	
 	/**
 	*mileage double, is a variable of String type that contains the mileage of the vehicle
 	*/
 	
-	protected double mileage;
+	private double mileage;
 	
 	/**
 	*typeV VehicleType, is a variable of VehicleType type that tells if the vehicle is used or new
 	*/
 	
-	protected VehicleType typeV;
+	private VehicleType typeV;
 	
 	/**
 	*licensePlate String, is a variable of String type that contains the licensePlate of the vehicle
 	*/
 	
-	protected String licensePlate;
+	private String licensePlate;
 	
 	/**
 	*documents Document[], is a variable of Document type that contains the documents of the vehicle like soat, technical mechanical review and property card
 	*/
 	
-	protected Document[] documents= new Document[numOfDocuments];
+	private Document[] documents= new Document[numOfDocuments];
 	
 	/**
 	*Constructor from objects of Vehicle type
 	*@param basePrice double, it's initialized
 	*@param brand String, it's initialized
-	*@param model String, it's initialized
+	*@param model int, it's initialized
 	*@param cylinderCapacity double, it's initialized
 	*@param mileage double, it's initialized
 	*@param typeV VehicleType, it's initialized
@@ -79,7 +79,7 @@ public abstract class Vehicle implements ICalculatePrice{
 	*@return an object of vehicle type
 	*/
 	
-	public Vehicle(double basePrice, String brand, String model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents){
+	public Vehicle(double basePrice, String brand, int model, double cylinderCapacity, double mileage, VehicleType typeV, String licensePlate, Document[] documents){
 		
 		this.basePrice=basePrice;
 		
@@ -115,7 +115,7 @@ public abstract class Vehicle implements ICalculatePrice{
 		
 		boolean out=false;
 		
-		if(documents[soatPlace]==null||documents[mechTechPlace]==null||(ACTUALYEAR.compareTo(documents[soatPlace].year)>0)||(ACTUALYEAR.compareTo(documents[mechTechPlace].year)>0)){
+		if(documents[soatPlace]==null||documents[mechTechPlace]==null||((documents[soatPlace].getYear())<ACTUALYEAR)||(documents[mechTechPlace].getYear())<ACTUALYEAR){
 			
 			out=true;
 			
@@ -169,7 +169,7 @@ public abstract class Vehicle implements ICalculatePrice{
 			
 			for(int i=0; i<documents.length;i++){
 				
-				if(documents[i]==null||(ACTUALYEAR.compareTo(documents[i].year)>0)){
+				if(documents[i]==null||((documents[i].getYear())<ACTUALYEAR)){
 					
 					switch(i) {
 						
@@ -184,7 +184,7 @@ public abstract class Vehicle implements ICalculatePrice{
 						case 2:
 							if(documents[i]!=null){
 								
-								msg+="\n"+((MechTechReview)documents[mechTechPlace]).toString();
+								msg+="\n"+(documents[propertyCardPlace]).toString();
 								
 							}else{
 								
@@ -225,7 +225,132 @@ public abstract class Vehicle implements ICalculatePrice{
 		
 		return msg;
 	}
+
+
+	public String Documents(){
+
+		String msg="Marca: " + brand + "\nModelo:" + model;  
+		
+		if(typeV==VehicleType.USED){
+			
+			msg+="\nEl vehiculo es usado\n\n";
+				
+				for(int i=0; i<documents.length;i++){
+				
+				if(documents[i]==null||((documents[i].getYear())<ACTUALYEAR)){
+					
+					switch(i) {
+						
+						case 0:
+							msg+="\nNo tiene soat o esta vencido\n";
+						break;
+						
+						case 1:
+							msg+="\nNo tiene revision tecnico mecanica o esta vencida\n";
+						break;
+						
+						case 2:
+							if(documents[i]!=null){
+								
+								msg+="\n"+(documents[propertyCardPlace]).toString();
+								
+							}else{
+								
+								msg+="\nNo tiene tarjeta de propiedad\n";
+								
+							}
+						break;
+						
+					}
+					
+				}else{
+					
+					switch(i) {
+						
+						case 0:
+							msg+="\n"+((Soat)documents[soatPlace]).toString();
+						break;
+						
+						case 1:
+							msg+="\n"+((MechTechReview)documents[mechTechPlace]).toString();
+						break;
+						
+						case 2:
+							msg+="\n"+(documents[propertyCardPlace]).toString();
+						break;
+						
+					}
+					
+				}
+				
+			}
+			
+		}else{
+			
+			msg+="\n"+((MechTechReview)documents[mechTechPlace]).toString()+"\nEl vehiculo es nuevo por lo que su kilometraje es 0, no tiene placa, ni soat, ni licensia de propiedad\n\n";
+			
+		}
+		
+		return msg;
+
+
+	}
 	
+
+	public double getBasePrice(){
+
+		return basePrice;
+
+	}
+
+	public String getBrand(){
+
+		return brand;
+
+	}
+
+	public int getModel(){
+
+		return model;
+
+	}
+
+	public double getCylinderCapacity(){
+
+		return cylinderCapacity;
+
+	}
+
+	public double getMileage(){
+
+		return mileage;
+
+	}
+
+	public VehicleType getTypeV(){
+
+		return typeV;
+
+	}
+
+	public String getLicensePlate(){
+
+		return licensePlate;
+
+	}
+
+	public double getSalePrice(){
+
+		return salePrice;
+
+	}
+
+	public void setSalePrice(double salePrice){
+
+		this.salePrice=salePrice;
+
+	}
+
 
 }
 	
