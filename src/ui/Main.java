@@ -232,6 +232,13 @@ public class Main{
 		}else{
 			
 			do{
+
+				System.out.println("Ingrese el kilometraje del vehiculo");
+				mileage=sc.nextInt();
+
+			}while(mileage<=0);
+
+			do{
 				System.out.println("Ingrese la placa del carro");
 				licensePlate=sc.next();
 			}while(licensePlate==null);
@@ -637,7 +644,7 @@ public class Main{
 			"\nTipo de Combustible(2)"+
 			"\nAutos nuevos/usados(3)");
 			filter=sc.nextInt();
-		}while(filter!=1&&filter!=2);
+		}while(filter!=1&&filter!=2&&filter!=3);
 
 		switch(filter){
 			
